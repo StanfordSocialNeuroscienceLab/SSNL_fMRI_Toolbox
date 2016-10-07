@@ -18,7 +18,7 @@ subjNo=("2013" "2015" "2016" "2017")
 # This script will generate design (.fsf files) in the folder "scripts/design/[name of design]"
 # The outputs of your analyses will be in results/[name of design]
 # See file structure on SSNL_fMRI_Toolbox wiki for how to organize your files
-design="CoopComp_Event" # [name of design]
+design="CoopComp_Event" #[replace with name of your design]
 
 # no. of regressors. This is important because different templates (.fsf files) are associated with different number of regressors.
 reg=3
