@@ -9,6 +9,11 @@
 export FSLPARALLEL=slurm
 
 ############ Set Parameters (here are the things you change) ############
+# Set your path name.#
+# This should be a folder in your *personal* (i.e. not lab and not YC's :p) scratch space. 
+# It is where your data, scripts, results live
+this_path=[NAME OF YOUR PATH] #e.g., "/scratch/users/ycleong/MotPer_fMRI/results/fmri/" 
+
 # Enter your subject number
 subjNo=("2013" "2015" "2016" "2017")
 
@@ -29,6 +34,9 @@ for subjID in "${subjNo[@]}"
     
     ### Here, we edit the template for this subject, using the sed command to find and replace ###
     \cp templates/2nd_lvl_${reg}reg.fsf ../design/$design/subj${subjID}_2ndLvl.fsf #Make a copy for each run
+
+    #Finds "ChangeMyPath" and replace with thisPath
+    sed -i -e 's/ChangeMyPath/'$this_path'/' ../design/$design/subj${subjID}_task_run${r}.fsf
 
     # Finds "ChangeMySubject" and replace with the Subject ID
     sed -i -e 's/ChangeMySubj/'${subjID}'/' ../design/$design/subj${subjID}_2ndLvl.fsf  #Swap "ChangeMyRun" with run number
